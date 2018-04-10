@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:PickerTuto"
+             x:Class="PickerTuto.MainPage">
+    <StackLayout>
+        <StackLayout Orientation="Horizontal">
+            <Label Text="Select Duration"/>
+            <!--x:Name="DurationPicker"-->
+            <Picker x:Name="pikerDays"
+              HorizontalOptions="FillAndExpand" >
+                <Picker.Items>
+                    <x:String>1 Day</x:String>
+                    <x:String>2 Days</x:String>
+                    <x:String>3 Days</x:String>
+                </Picker.Items>
+            </Picker>
+            <Button Text="Add" Clicked="AddBtn"/>
+        </StackLayout>
+
+        <ListView  x:Name="TheValue">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout Orientation="Horizontal">
+                        <Label Text="{Binding NameEn}"/>
+                            <Button Text="Delete" Clicked="ToDelete" CommandParameter="{Binding NameEn}"/>
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+
+    </StackLayout>
+
+
+</ContentPage>
