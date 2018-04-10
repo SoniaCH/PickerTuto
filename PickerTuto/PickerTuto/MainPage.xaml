@@ -24,12 +24,12 @@
                 <ColumnDefinition Width="3*" />
             </Grid.ColumnDefinitions>
             
-            <ListView  Grid.Row="0" Grid.Column="0" x:Name="TheValueOne" HorizontalOptions="Center" VerticalOptions="Center">
+            <ListView  Grid.Row="0" Grid.Column="0" x:Name="TheValueOne" HorizontalOptions="Center" VerticalOptions="Center" Margin="20,0,20,0">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
                             <StackLayout Orientation="Horizontal">
-                                <Label Text="{Binding NameEn}" HorizontalOptions="CenterAndExpand"/>
+                                <Label Text="{Binding NameEn}" HorizontalOptions="CenterAndExpand" VerticalOptions="Center"/>
                                 <Button Text="Delete" Clicked="ToDelete" CommandParameter="{Binding NameEn}" 
                                         HorizontalOptions="CenterAndExpand" VerticalOptions="Center"/>
                             </StackLayout>
@@ -37,7 +37,8 @@
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
-            <ListView  Grid.Row="0" Grid.Column="1" x:Name="TheValueTwo" HorizontalOptions="Center" VerticalOptions="Center">
+            
+            <ListView  Grid.Row="0" Grid.Column="1" x:Name="TheValueTwo" HorizontalOptions="Center" VerticalOptions="Center" Margin="20,0,20,0">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
@@ -50,7 +51,8 @@
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
-            <ListView  Grid.Row="0" Grid.Column="2" x:Name="TheValueThree" HorizontalOptions="Center" VerticalOptions="Center">
+
+            <ListView  Grid.Row="0" Grid.Column="2" x:Name="TheValueThree" HorizontalOptions="Center" VerticalOptions="Center" Margin="20,0,20,0">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
