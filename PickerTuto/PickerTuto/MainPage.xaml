@@ -17,8 +17,55 @@
             </Picker>
             <Button Text="Add" Clicked="AddBtn"/>
         </StackLayout>
+        <Grid VerticalOptions="Center" HorizontalOptions="Center">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="3*" />
+                <ColumnDefinition Width="3*" />
+                <ColumnDefinition Width="3*" />
+            </Grid.ColumnDefinitions>
+            
+            <ListView  Grid.Row="0" Grid.Column="0" x:Name="TheValueOne" HorizontalOptions="Center" VerticalOptions="Center">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="{Binding NameEn}" HorizontalOptions="CenterAndExpand"/>
+                                <Button Text="Delete" Clicked="ToDelete" CommandParameter="{Binding NameEn}" 
+                                        HorizontalOptions="CenterAndExpand" VerticalOptions="Center"/>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <ListView  Grid.Row="0" Grid.Column="1" x:Name="TheValueTwo" HorizontalOptions="Center" VerticalOptions="Center">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="{Binding NameEn}" HorizontalOptions="CenterAndExpand" VerticalOptions="Center"/>
+                                <Button Text="Delete" Clicked="ToDelete" CommandParameter="{Binding NameEn}"
+                                        HorizontalOptions="CenterAndExpand" VerticalOptions="Center"/>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <ListView  Grid.Row="0" Grid.Column="2" x:Name="TheValueThree" HorizontalOptions="Center" VerticalOptions="Center">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="{Binding NameEn}" HorizontalOptions="CenterAndExpand" VerticalOptions="Center"/>
+                                <Button Text="Delete" Clicked="ToDelete" CommandParameter="{Binding NameEn}" 
+                                        HorizontalOptions="CenterAndExpand" VerticalOptions="Center"/>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
 
-        <ListView  x:Name="TheValue">
+        </Grid>
+        <ListView  x:Name="TheValueFour">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>

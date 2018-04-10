@@ -10,6 +10,7 @@ namespace PickerTuto
 {
 	public partial class MainPage : ContentPage
 	{
+        int _heightRequest =50;
         ObservableCollection<Colors> MyList = new ObservableCollection<Colors>();
         ObservableCollection<Colors> MyListChosen = new ObservableCollection<Colors>();
 
@@ -17,8 +18,18 @@ namespace PickerTuto
 		{
 			InitializeComponent();
             BindingContext = this;
-            TheValue.ItemsSource = MyList;
-		}
+            TheValueOne.ItemsSource = MyList;
+            TheValueOne.HeightRequest = _heightRequest;
+
+            TheValueTwo.ItemsSource = MyList;
+            TheValueTwo.HeightRequest = _heightRequest;
+
+            TheValueThree.ItemsSource = MyList;
+            TheValueThree.HeightRequest = _heightRequest;
+
+            TheValueFour.ItemsSource = MyList;
+            TheValueFour.HeightRequest = _heightRequest;
+        }
         public void AddBtn( object sender,EventArgs args)
         {
             var selectedValue = pikerDays.Items[pikerDays.SelectedIndex].ToString();
@@ -28,7 +39,18 @@ namespace PickerTuto
             };
             
             MyList.Add(colorChosen);
-            TheValue.ItemsSource = MyList;
+            _heightRequest = _heightRequest + 50;
+            TheValueOne.ItemsSource = MyList;
+            TheValueOne.HeightRequest = _heightRequest;
+
+            TheValueTwo.ItemsSource = MyList;
+            TheValueTwo.HeightRequest = _heightRequest;
+
+            TheValueThree.ItemsSource = MyList;
+            TheValueThree.HeightRequest = _heightRequest;
+
+            TheValueFour.ItemsSource = MyList;
+            TheValueFour.HeightRequest = _heightRequest;
         }
         public void ToDelete(object sender,EventArgs args)
         {
