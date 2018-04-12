@@ -2,7 +2,13 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:PickerTuto"
+             xmlns:converters="clr-namespace:PickerTuto;assembly=PickerTuto"
              x:Class="PickerTuto.MainPage">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:CheckConverter x:Key="CheckConverter"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
     <StackLayout>
         <StackLayout Orientation="Horizontal">
             <Label Text="Select Duration"/>
@@ -67,18 +73,25 @@
             </ListView>
 
         </Grid>
-        <ListView  x:Name="TheValueFour">
+        <ListView  ItemsSource="{Binding MyDictionary}"
+                   IsPullToRefreshEnabled="True"
+                   x:Name="TheValueFour">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
                         <StackLayout Orientation="Horizontal">
-                        <Label Text="{Binding NameEn}"/>
-                            <Button Text="Delete" Clicked="ToDelete" CommandParameter="{Binding NameEn}"/>
+                        <Label Text="{Binding Key.NameEn}" HorizontalOptions="StartAndExpand"/>
+                            <Button Image="{Binding Value,Converter={StaticResource CheckConverter}}" 
+                                    Clicked="ToCheck" CommandParameter="{Binding Key.NameEn}"
+                                    BackgroundColor="Transparent" HorizontalOptions="End"/>
                         </StackLayout>
                     </ViewCell>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
+
+
+   
 
 
     </StackLayout>
