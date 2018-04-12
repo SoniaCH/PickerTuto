@@ -90,8 +90,23 @@
             </ListView.ItemTemplate>
         </ListView>
 
+        <ListView  ItemsSource="{Binding MyObservableDictionary}"
+                   IsPullToRefreshEnabled="True"
+                   x:Name="dictionary">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout Orientation="Horizontal">
+                            <Label Text="{Binding Key.NameEn}" HorizontalOptions="StartAndExpand"/>
+                            <Button Image="{Binding Value,Converter={StaticResource CheckConverter}}" 
+                                    Clicked="ToCheckColor" CommandParameter="{Binding Key.NameEn}"
+                                    BackgroundColor="Transparent" HorizontalOptions="End"/>
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
 
-   
 
 
     </StackLayout>

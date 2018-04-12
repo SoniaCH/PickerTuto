@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,9 +22,13 @@ namespace PickerTuto
             }
         }
 
+
+        ObservableCollection<ObservableDictionary> MyObservableDictionary = new ObservableCollection<ObservableDictionary>();
+
+
         public MainPage()
-		{
-			InitializeComponent();
+        {
+            InitializeComponent();
             BindingContext = this;
             TheValueOne.ItemsSource = MyList;
             TheValueOne.HeightRequest = _heightRequest;
@@ -34,14 +39,24 @@ namespace PickerTuto
             TheValueThree.ItemsSource = MyList;
             TheValueThree.HeightRequest = _heightRequest;
 
-           
+
             MyDictionary = new Dictionary<Colors, bool>();
-            MyDictionary.Add(new Colors() { NameEn = "blue" },false);
-            MyDictionary.Add(new Colors() { NameEn = "red" },false);
-            MyDictionary.Add(new Colors() { NameEn = "green" },false);
-            MyDictionary.Add(new Colors() { NameEn = "yellow" },false);
+            MyDictionary.Add(new Colors() { NameEn = "blue" }, false);
+            MyDictionary.Add(new Colors() { NameEn = "red" }, false);
+            MyDictionary.Add(new Colors() { NameEn = "green" }, false);
+            MyDictionary.Add(new Colors() { NameEn = "yellow" }, false);
+
+
+            MyObservableDictionary = new ObservableCollection<ObservableDictionary>();
+            MyObservableDictionary.Add(new ObservableDictionary() {Key= new Colors() { NameEn = "blue" },Value =false });
+            MyObservableDictionary.Add(new ObservableDictionary() {Key= new Colors() { NameEn = "red" },Value =false });
+            MyObservableDictionary.Add(new ObservableDictionary() {Key= new Colors() { NameEn = "greeyellow" },Value =false });
+            MyObservableDictionary.Add(new ObservableDictionary() {Key= new Colors() { NameEn = "blue" },Value =false });
+          
+
 
             TheValueFour.ItemsSource = MyDictionary;
+            dictionary.ItemsSource = MyObservableDictionary;
         }
         public void AddBtn( object sender,EventArgs args)
         {
@@ -103,6 +118,38 @@ namespace PickerTuto
                 }
             }
             
+
+        }
+
+        public void ToCheckColor(object sender, EventArgs args)
+        {
+            var item = (Button)sender;
+
+            ObservableDictionary listitem = (from itm in MyObservableDictionary
+                                             where itm.Key.NameEn == item.CommandParameter.ToString()
+                                             select itm)
+                            .FirstOrDefault<ObservableDictionary>();
+
+            if (listitem.Value == false)
+            {
+                var oldidex = MyObservableDictionary.IndexOf(listitem);
+                var itm = new ObservableDictionary() { Key = listitem.Key, Value = true };
+                MyObservableDictionary[oldidex] = itm;
+
+            }
+            else {
+                var oldidex = MyObservableDictionary.IndexOf(listitem);
+                var itm = new ObservableDictionary() { Key = listitem.Key, Value = false };
+                MyObservableDictionary[oldidex] = itm;
+            }
+
+
+
+  
+
+
+
+
 
         }
     }
